@@ -1,133 +1,157 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración - Sorteos Arteaga</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #111;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #ff0000;
-    }
-
-    header h1 {
-      color: #ffcc00;
-      font-size: 2em;
-    }
-
-    .container {
-      padding: 20px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-      color: #ffcc00;
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 5px;
-      background-color: #222;
-      color: #fff;
-    }
-
-    input[type="file"] {
-      margin-top: 10px;
-      color: #ffcc00;
-    }
-
-    button {
-      margin-top: 20px;
-      background-color: #ff0000;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-
-    button:hover {
-      background-color: #ff6600;
-    }
-
-    .save-status {
-      margin-top: 15px;
-      color: #00ff88;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #111;
-      color: #aaa;
-      margin-top: 40px;
-      font-size: 0.8em;
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Administración - Sorteos Arteaga</title>
+<style>
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #111;
+  padding: 20px;
+}
+section {
+  background-color: #111;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+}
+button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #666;
+}
+img {
+  max-width: 90%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+footer {
+  background: #111;
+  padding: 10px;
+  margin-top: 30px;
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>⚙️ Panel de Administración</h1>
-    <p>Control interno - Sorteos Arteaga</p>
-  </header>
+<header>
+  <h1>⚙️ Panel de Administración - Sorteos Arteaga</h1>
+</header>
 
-  <div class="container">
-    <label for="detalles">Detalles de la rifa</label>
-    <textarea id="detalles" rows="3" placeholder="Escribe los detalles de la rifa..."></textarea>
+<!-- Configuración general -->
+<section id="configuracion">
+  <h2>Configuración del Sorteo</h2>
+  <label>Número de emisiones:</label><br>
+  <input type="number" id="emisiones" placeholder="Ej: 1"><br>
+  <label>Número de boletos por emisión:</label><br>
+  <input type="number" id="boletos" placeholder="Ej: 1000"><br>
+</section>
 
-    <label for="premio">Información del premio</label>
-    <textarea id="premio" rows="2" placeholder="Escribe qué se gana el participante..."></textarea>
+<!-- Descripción -->
+<section id="descripcion">
+  <h2>Descripción del Sorteo</h2>
+  <textarea id="detalle" rows="5" placeholder="Escribe los detalles de la rifa..."></textarea>
+  <label>Fecha del evento:</label><br>
+  <input type="date" id="fecha">
+</section>
 
-    <label for="pagos">Métodos de pago</label>
-    <textarea id="pagos" rows="2" placeholder="Ejemplo: Tarjeta, Oxxo, transferencia..."></textarea>
+<!-- Fotos -->
+<section id="fotos">
+  <h2>Fotos del Premio</h2>
+  <input type="file" id="subirFoto" accept="image/*"><br>
+  <img id="preview" src="" alt="Previsualización">
+</section>
 
-    <label for="promos">Promociones</label>
-    <textarea id="promos" rows="2" placeholder="Ejemplo: 2 boletos por 100 pesos..."></textarea>
+<!-- Redes sociales -->
+<section id="redes">
+  <h2>Redes Sociales</h2>
+  <input type="text" id="facebook" placeholder="Enlace de Facebook">
+  <input type="text" id="instagram" placeholder="Enlace de Instagram">
+  <input type="text" id="whatsapp" placeholder="Número o enlace de WhatsApp">
+</section>
 
-    <label for="fecha">Fecha del evento</label>
-    <input type="text" id="fecha" placeholder="Ejemplo: 15 de diciembre de 2025">
+<!-- Botón de guardado -->
+<section>
+  <button id="guardar">💾 Guardar configuración</button>
+</section>
 
-    <label for="imagen">Subir foto del premio</label>
-    <input type="file" id="imagen" accept="image/*">
+<footer>
+  <p>© 2025 Sorteos Arteaga - Todos los derechos reservados</p>
+</footer>
 
-    <button onclick="guardarDatos()">💾 Guardar información</button>
-    <div class="save-status" id="status"></div>
-  </div>
+<script>
+const emisiones = document.getElementById('emisiones');
+const boletos = document.getElementById('boletos');
+const detalle = document.getElementById('detalle');
+const fecha = document.getElementById('fecha');
+const subirFoto = document.getElementById('subirFoto');
+const preview = document.getElementById('preview');
+const facebook = document.getElementById('facebook');
+const instagram = document.getElementById('instagram');
+const whatsapp = document.getElementById('whatsapp');
 
-  <footer>
-    © 2025 Sorteos Arteaga – Todos los derechos reservados.
-  </footer>
+// Cargar datos guardados
+window.onload = () => {
+  emisiones.value = localStorage.getItem('emisiones') || '';
+  boletos.value = localStorage.getItem('totalBoletos') || '';
+  detalle.value = localStorage.getItem('detalle') || '';
+  fecha.value = localStorage.getItem('fecha') || '';
+  facebook.value = localStorage.getItem('facebook') || '';
+  instagram.value = localStorage.getItem('instagram') || '';
+  whatsapp.value = localStorage.getItem('whatsapp') || '';
+  if (localStorage.getItem('foto')) preview.src = localStorage.getItem('foto');
+};
 
-  <script>
-    function guardarDatos() {
-      const status = document.getElementById('status');
-      status.textContent = "Guardando...";
-      setTimeout(() => {
-        status.textContent = "✅ Información guardada correctamente (modo local)";
-      }, 1000);
-    }
-  </script>
+// Previsualización y guardado de foto
+subirFoto.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      preview.src = reader.result;
+      localStorage.setItem('foto', reader.result);
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Guardar configuración
+document.getElementById('guardar').addEventListener('click', () => {
+  localStorage.setItem('emisiones', emisiones.value);
+  localStorage.setItem('totalBoletos', boletos.value);
+  localStorage.setItem('detalle', detalle.value);
+  localStorage.setItem('fecha', fecha.value);
+  localStorage.setItem('facebook', facebook.value);
+  localStorage.setItem('instagram', instagram.value);
+  localStorage.setItem('whatsapp', whatsapp.value);
+  alert('✅ Configuración guardada correctamente');
+});
+</script>
+
 </body>
 </html>
