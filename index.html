@@ -1,458 +1,260 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Sorteos Arteaga</title>
-<meta name="description" content="Participa y gana con Sorteos Arteaga - Rifas basadas en Lotería Nacional">
-<style>
-  :root{
-    --bg:#000;
-    --panel:#0a0a0a;
-    --text:#ffffff;
-    --muted:#9a9a9a;
-    --amarillo:#FFD400;
-    --rojo:#C62828;
-    --azul:#1976D2;
-    --naranja:#FF9800;
-    --max-width:1100px;
-    --font-sans:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-  *{box-sizing:border-box}
-  body{font-family:var(--font-sans);margin:0;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-  header{background:linear-gradient(90deg,var(--amarillo),var(--rojo));padding:14px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between;border-bottom:4px solid var(--azul)}
-  .brand{display:flex;gap:12px;align-items:center}
-  .brand img{height:48px;width:48px;object-fit:cover;border-radius:6px;border:2px solid rgba(255,255,255,0.04)}
-  .brand h1{margin:0;font-size:20px;color:var(--text);font-weight:800}
-  .brand p{margin:0;font-size:13px;color:var(--muted)}
-  .top-actions{display:flex;gap:8px;align-items:center}
-  .btn{padding:8px 12px;border-radius:6px;border:none;cursor:pointer;font-weight:700;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.04)}
-  .btn.primary{background:transparent;color:var(--text);border:2px solid rgba(255,255,255,0.06)}
-  .container{max-width:var(--max-width);margin:18px auto;padding:0 12px}
-  .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
-  @media (max-width:900px){.grid{grid-template-columns:1fr}}
-  .card{background:linear-gradient(180deg,var(--panel),#050505);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-  .section-title{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-  .section-title h2{margin:0;font-size:18px;color:var(--text)}
-  a.social{display:inline-block;margin-right:8px;padding:6px 10px;border-radius:6px;background:rgba(255,255,255,0.02);text-decoration:none;color:var(--text);font-weight:700;font-size:14px}
-  .promo{background:rgba(255,255,255,0.02);color:var(--amarillo);padding:10px;border-radius:8px;margin:10px 0;border:1px solid rgba(255,255,255,0.02)}
-  .whatsapp{background:var(--amarillo);color:#000;padding:10px;border-radius:8px;text-align:center;font-weight:800;text-decoration:none;display:inline-block}
-  .maquina{display:flex;align-items:center;gap:12px}
-  .maquina img{height:56px}
-  .ticket-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
-  .ticket{padding:8px;border-radius:6px;text-align:center;font-weight:800;cursor:pointer;border:1px solid rgba(255,255,255,0.03);user-select:none}
-  .ticket.available{background:var(--text);color:var(--bg)}
-  .ticket.sold{background:var(--bg);color:var(--text);border:2px solid rgba(255,255,255,0.06)}
-  .ticket.reserved{background:var(--naranja);color:#050505}
-  .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
-  input[type=number],input[type=text],select,textarea{padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);width:100%}
-  label{font-weight:700;color:var(--muted);display:block;margin-bottom:6px}
-  footer{max-width:var(--max-width);margin:22px auto;padding:10px 12px;color:var(--muted);text-align:center}
-  .small{font-size:13px;color:var(--muted)}
-  .gallery img{width:100%;border-radius:8px;object-fit:cover}
-  .admin-badge{background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:6px;font-weight:700;color:var(--text)}
-  .modal {position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;padding:12px;z-index:50}
-  .modal .box{background:var(--panel);padding:14px;border-radius:8px;max-width:520px;width:100%}
-  .hidden{display:none}
-  /* minimalista: botones planos */
-  .flat{border-radius:4px;padding:8px 10px;border:1px solid rgba(255,255,255,0.04);background:transparent}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteos Arteaga - Participa y gana</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 15px;
+      background-color: #111;
+      border-bottom: 2px solid #ff0000;
+    }
+
+    header h1 {
+      color: #ffcc00;
+      font-size: 2.5em;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      color: #00aaff;
+      font-size: 1.2em;
+    }
+
+    section {
+      padding: 25px;
+      border-bottom: 1px solid #222;
+    }
+
+    h2 {
+      color: #ffcc00;
+      text-transform: uppercase;
+      border-left: 4px solid #ff0000;
+      padding-left: 8px;
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .admin-section {
+      background-color: #111;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .whatsapp {
+      background-color: #25D366;
+      color: #000;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .promos {
+      background-color: #000;
+      padding: 15px;
+      text-align: center;
+      border-top: 2px solid #ff0000;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      background-color: #111;
+      color: #aaa;
+    }
+
+    button {
+      background-color: #ff0000;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff6600;
+    }
+
+    .boletos {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .boletos span {
+      display: inline-block;
+      margin: 3px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .disponible { background-color: #fff; color: #000; }
+    .vendido { background-color: #000; color: #fff; border: 1px solid #555; }
+    .apartado { background-color: orange; color: #000; }
+
+    .maquinita {
+      text-align: center;
+      padding: 25px;
+      border-bottom: 2px solid #ffcc00;
+    }
+
+    .maquinita img {
+      width: 70px;
+      height: 70px;
+    }
+
+    .maquinita input {
+      width: 80px;
+      padding: 5px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <img id="logoImg" src="" alt="Logo" onerror="this.style.display='none'">
+
+  <header>
+    <h1>🎟️ Sorteos Arteaga</h1>
+    <p>Participa y gana con Sorteos Arteaga</p>
+  </header>
+
+  <section class="social">
+    <h2>Redes Sociales</h2>
     <div>
-      <h1>Sorteos Arteaga</h1>
-      <p>Participa y gana con Sorteos Arteaga</p>
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a>
     </div>
+  </section>
+
+  <section>
+    <h2>Detalles de la Rifa</h2>
+    <div class="admin-section">
+      <p>Solo el administrador puede editar esta sección con información sobre la rifa y el premio.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fotos de la Rifa</h2>
+    <div class="admin-section">
+      <p>Solo el administrador puede agregar imágenes del premio o del sorteo.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Métodos de Pago</h2>
+    <div class="admin-section">
+      <p>Aceptamos pagos con tarjeta, transferencias y depósitos en Oxxo.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Lista de Disponibles</h2>
+    <div class="boletos">
+      <div class="maquinita">
+        <img src="https://cdn-icons-png.flaticon.com/512/3658/3658951.png" alt="Maquinita de la suerte">
+        <h3>🎰 Maquinita de la Suerte</h3>
+        <input type="number" id="cantidad" placeholder="Cantidad" min="1" max="10000">
+        <br><br>
+        <button onclick="generarBoletos()">Generar</button>
+      </div>
+      <div id="numeros"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Legalidad y Transparencia</h2>
+    <p>Comprometidos con la honestidad y claridad en cada sorteo. Basados en los resultados oficiales de la Lotería Nacional.</p>
+  </section>
+
+  <div class="whatsapp">
+    📱 Contáctanos por WhatsApp para información de rifas
   </div>
-  <div class="top-actions">
-    <div class="admin-badge">Admin: Kevin Arteaga</div>
-    <button class="btn" onclick="openAdmin()">Admin</button>
+
+  <div class="promos">
+    <h2>Promociones</h2>
+    <p>🎁 2 boletos por $100 pesos</p>
   </div>
-</header>
 
-<main class="container">
-  <div class="grid">
-    <div>
-      <section class="card">
-        <div class="section-title"><h2>Redes sociales</h2></div>
-        <div><a id="facebookLink" class="social" href="#" target="_blank">Facebook</a><a id="instagramLink" class="social" href="#" target="_blank">Instagram</a></div>
-      </section>
+  <section>
+    <h2>Preguntas Frecuentes</h2>
+    <p>¿Cómo se elige al ganador? – Según los resultados de la Lotería Nacional.</p>
+  </section>
 
-      <section class="card" style="margin-top:12px">
-        <div class="section-title maquina">
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect rx='10' width='64' height='64' fill='%23FFD400'/><circle cx='32' cy='24' r='10' fill='%23C62828'/></svg>" alt="maquinita">
-          <div>
-            <h2>Maquinita de la suerte</h2>
-            <div class="small">Genera aleatoriamente hasta 10,000 boletos</div>
-          </div>
-        </div>
+  <section>
+    <h2>Términos y Condiciones</h2>
+    <p>La participación implica la aceptación total de las bases del sorteo.</p>
+  </section>
 
-        <div style="margin-top:12px" class="card">
-          <div class="controls">
-            <label style="margin:0;width:160px">Cantidad aleatoria:</label>
-            <input id="randomCount" type="number" min="1" max="10000" value="1" style="width:120px">
-            <button class="flat" onclick="generarAleatorios()">Generar</button>
-            <button class="flat" onclick="limpiarSeleccion()">Limpiar selección</button>
-          </div>
-          <div class="small">Seleccionados: <span id="selectedCount">0</span></div>
-        </div>
-      </section>
+  <section>
+    <h2>Fecha del Evento</h2>
+    <p>El sorteo se llevará a cabo el día que defina el administrador.</p>
+  </section>
 
-      <section class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Lista de boletos</h2></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div class="legend">
-            <span style="display:inline-block;width:12px;height:12px;background:var(--text);margin-right:6px;border-radius:2px"></span> Disponible
-            <span style="display:inline-block;width:12px;height:12px;background:var(--bg);margin:0 12px;border:1px solid rgba(255,255,255,0.04);border-radius:2px"></span> Vendido
-            <span style="display:inline-block;width:12px;height:12px;background:var(--naranja);margin-left:12px;border-radius:2px"></span> Apartado
-          </div>
-          <div><strong>N° emisiones:</strong> <span id="emisionesCount">1000</span></div>
-        </div>
+  <footer>
+    © 2025 Sorteos Arteaga – Todos los derechos reservados.
+  </footer>
 
-        <div id="ticketContainer" class="ticket-list card" style="padding:12px"></div>
-
-        <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-          <button class="flat" onclick="openApartar()">Apartar</button>
-          <div class="small">Al apartar, se enviará un mensaje a tu WhatsApp (configurable en Admin).</div>
-        </div>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Información de la rifa y premio</h2></div>
-        <div id="infoRifa">(Admin: editar) Aquí puedes escribir la información de la rifa y el premio.</div>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Fecha del sorteo</h2></div>
-        <div id="fechaSorteo">--/--/----</div>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Términos y condiciones</h2></div>
-        <div id="termsText">(Admin: editar) Términos y condiciones.</div>
-      </section>
-
-      <section class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Preguntas Frecuentes</h2></div>
-        <div id="faqText">(Admin: editar) FAQ.</div>
-      </section>
-    </div>
-
-    <aside>
-      <div class="card promo">
-        <strong>Promociones</strong>
-        <div id="promoText" style="margin-top:8px">2 boletos por 100 pesos</div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Métodos de pago</h2></div>
-        <div id="paymentsList" class="small"></div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Galería</h2></div>
-        <div id="gallery" style="display:flex;flex-wrap:wrap;gap:8px"></div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="section-title"><h2>Somos: Legalidad y transparencia</h2></div>
-        <div class="small">Nos regimos por la normativa vigente y publicamos la evidencia del sorteo.</div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <a id="waContact" class="whatsapp" href="#" target="_blank">Contactar por WhatsApp</a>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="small">Admin: botón arriba para editar contenido, subir logo y cambiar opciones.</div>
-      </div>
-
-    </aside>
-  </div>
-</main>
-
-<!-- Apartar modal -->
-<div id="modal" class="hidden modal">
-  <div class="box">
-    <h3>Apartar boletos</h3>
-    <div class="small">Boletos seleccionados: <span id="modalTickets"></span></div>
-    <label>Nombre completo</label>
-    <input id="buyerName" type="text" placeholder="Tu nombre completo">
-    <label style="margin-top:8px">Estado</label>
-    <select id="buyerState"></select>
-    <label style="margin-top:8px">Teléfono</label>
-    <input id="buyerPhone" type="text" placeholder="55XXXXXXXX">
-    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
-      <button class="flat" onclick="closeModal()">Cancelar</button>
-      <button class="flat" onclick="procesarApartado()">Enviar por WhatsApp</button>
-    </div>
-  </div>
-</div>
-
-<!-- Admin modal -->
-<div id="adminModal" class="hidden modal">
-  <div class="box">
-    <h3>Panel Admin</h3>
-    <div style="display:flex;gap:12px;flex-wrap:wrap">
-      <div style="flex:1;min-width:200px">
-        <label>Logo (subir)</label><input id="logoUpload" type="file" accept="image/*">
-        <label style="margin-top:8px">Título</label><input id="siteTitleInput" type="text" value="Sorteos Arteaga">
-        <label style="margin-top:8px">Número total de emisiones</label><input id="totalEmisiones" type="number" min="10" max="10000" value="1000">
-        <label style="margin-top:8px">WhatsApp organizador (ej: 52155...)</label><input id="organizerWa" type="text" placeholder="52155...">
-      </div>
-      <div style="flex:1;min-width:200px">
-        <label>Promoción</label><input id="adminPromo" type="text" placeholder="2 boletos por 100 pesos">
-        <label style="margin-top:8px">Métodos de pago (coma)</label><input id="adminPayments" type="text" placeholder="Tarjeta,Oxxo,Transferencia">
-        <label style="margin-top:8px">Fecha del sorteo</label><input id="adminDate" type="date">
-      </div>
-    </div>
-
-    <label style="margin-top:8px">Información de la rifa</label><textarea id="adminInfo" rows="3"></textarea>
-    <label style="margin-top:8px">Términos y condiciones</label><textarea id="adminTnc" rows="3"></textarea>
-    <label style="margin-top:8px">Preguntas frecuentes (FAQ)</label><textarea id="adminFaq" rows="3"></textarea>
-
-    <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end">
-      <input id="newAdminPass" type="text" placeholder="Cambiar contraseña (opcional)" style="width:220px">
-      <button class="flat" onclick="closeAdmin()">Cerrar</button>
-      <button class="flat" onclick="guardarAdmin()">Guardar</button>
-    </div>
-
-    <hr style="margin:10px 0;border-color:rgba(255,255,255,0.03)">
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="flat" onclick="resetAllStates()">Reset estados</button>
-      <button class="flat" onclick="exportData()">Exportar (JSON)</button>
-      <button class="flat" onclick="importDataPrompt()">Importar (JSON)</button>
-    </div>
-
-  </div>
-</div>
-
-<footer>
-  <div>© 2025 Sorteos Arteaga – Todos los derechos reservados</div>
-</footer>
-
-<script>
-/* Datos guardados localmente en localStorage (panel admin, contraseña admin123 por defecto) */
-const DEFAULT = {
-  siteTitle: "Sorteos Arteaga",
-  logo: "",
-  totalEmisiones: 1000,
-  organizerWhatsApp: "",
-  promoText: "2 boletos por 100 pesos",
-  payments: ["Tarjeta","Oxxo"],
-  gallery: [],
-  infoText: "Detalles de la rifa y el premio.",
-  terms: "Términos y condiciones...",
-  faq: "Preguntas frecuentes...",
-  drawDate: "",
-  tickets: [],
-  adminPass: "admin123"
-};
-
-function loadData(){
-  const raw = localStorage.getItem('rifa_arteaga_v1');
-  if(!raw){ localStorage.setItem('rifa_arteaga_v1', JSON.stringify(DEFAULT)); return JSON.parse(JSON.stringify(DEFAULT)); }
-  try{
-    const parsed = JSON.parse(raw);
-    const merged = Object.assign({}, DEFAULT, parsed);
-    if(!Array.isArray(merged.tickets) || merged.tickets.length !== merged.totalEmisiones){
-      merged.tickets = buildTickets(merged.totalEmisiones, parsed.tickets || []);
+  <script>
+    function generarBoletos() {
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+      const numerosDiv = document.getElementById("numeros");
+      numerosDiv.innerHTML = "";
+      if (!cantidad || cantidad < 1 || cantidad > 10000) {
+        alert("Por favor ingresa una cantidad válida entre 1 y 10,000.");
+        return;
+      }
+      for (let i = 0; i < cantidad; i++) {
+        const numero = Math.floor(Math.random() * 10000) + 1;
+        const span = document.createElement("span");
+        span.className = "disponible";
+        span.textContent = numero;
+        span.onclick = () => seleccionarNumero(span);
+        numerosDiv.appendChild(span);
+      }
     }
-    return merged;
-  }catch(e){
-    localStorage.setItem('rifa_arteaga_v1', JSON.stringify(DEFAULT));
-    return JSON.parse(JSON.stringify(DEFAULT));
-  }
-}
-function saveData(d){ localStorage.setItem('rifa_arteaga_v1', JSON.stringify(d)); }
-function buildTickets(total, existing){
-  const arr=[]; const map={};
-  if(Array.isArray(existing)) existing.forEach(t=>map[t.num]=t.status||'available');
-  for(let i=1;i<=total;i++) arr.push({num:i,status:map[i]||'available'});
-  return arr;
-}
 
-/* Estado */
-let DATA = loadData();
-let selection = new Set();
-
-/* Render */
-function renderAll(){
-  document.querySelector('header .brand h1').textContent = DATA.siteTitle || "Sorteos Arteaga";
-  document.querySelector('header .brand p').textContent = "Participa y gana con Sorteos Arteaga";
-  const logoImg = document.getElementById('logoImg');
-  if(DATA.logo){ logoImg.src=DATA.logo; logoImg.style.display='block'; } else logoImg.style.display='none';
-  document.getElementById('emisionesCount').textContent = DATA.totalEmisiones;
-  document.getElementById('promoText').textContent = DATA.promoText || '';
-  const paymentsList = document.getElementById('paymentsList'); paymentsList.innerHTML='';
-  (DATA.payments||[]).forEach(p=>{ const d=document.createElement('div'); d.textContent=p; d.className='small'; paymentsList.appendChild(d); });
-  const gallery = document.getElementById('gallery'); gallery.innerHTML='';
-  (DATA.gallery||[]).forEach(img=>{
-    const wrap = document.createElement('div'); wrap.style.width='48%'; wrap.style.marginBottom='8px';
-    const i = document.createElement('img'); i.src=img; i.className='gallery';
-    wrap.appendChild(i); gallery.appendChild(wrap);
-  });
-  document.getElementById('infoRifa').textContent = DATA.infoText || '';
-  document.getElementById('termsText').textContent = DATA.terms || '';
-  document.getElementById('faqText').textContent = DATA.faq || '';
-  document.getElementById('fechaSorteo').textContent = DATA.drawDate || '--/--/----';
-  document.getElementById('facebookLink').href = DATA.facebook || '#';
-  document.getElementById('instagramLink').href = DATA.instagram || '#';
-  document.getElementById('waContact').href = DATA.organizerWhatsApp ? `https://wa.me/${DATA.organizerWhatsApp}` : '#';
-  document.getElementById('adminPromo').value = DATA.promoText || '';
-  document.getElementById('adminPayments').value = (DATA.payments||[]).join(',');
-  document.getElementById('adminInfo').value = DATA.infoText || '';
-  document.getElementById('adminTnc').value = DATA.terms || '';
-  document.getElementById('adminFaq').value = DATA.faq || '';
-  document.getElementById('adminDate').value = DATA.drawDate || '';
-  document.getElementById('siteTitleInput').value = DATA.siteTitle || '';
-  document.getElementById('totalEmisiones').value = DATA.totalEmisiones || 1000;
-  document.getElementById('organizerWa').value = DATA.organizerWhatsApp || '';
-  renderTickets(); fillStates();
-}
-function renderTickets(){
-  const c = document.getElementById('ticketContainer'); c.innerHTML='';
-  if(DATA.tickets.length !== DATA.totalEmisiones){ DATA.tickets = buildTickets(DATA.totalEmisiones, DATA.tickets); saveData(DATA); }
-  DATA.tickets.forEach(t=>{
-    const el = document.createElement('div');
-    el.className = 'ticket ' + (t.status==='available'? 'available': t.status==='sold'? 'sold':'reserved');
-    el.textContent = String(t.num).padStart(4,'0');
-    el.onclick = ()=>toggleSelect(t.num);
-    c.appendChild(el);
-  });
-  document.getElementById('selectedCount').textContent = selection.size;
-}
-
-/* Selección */
-function toggleSelect(num){
-  const t = DATA.tickets[num-1];
-  if(!t) return;
-  if(t.status==='sold'){ alert('Boleto ya vendido.'); return; }
-  if(selection.has(num)) selection.delete(num); else selection.add(num);
-  // repaint: mark selection as reserved visually
-  const elems = document.querySelectorAll('.ticket');
-  elems.forEach(el=>{
-    const n = parseInt(el.textContent,10);
-    if(selection.has(n)){ el.classList.remove('available'); el.classList.add('reserved'); }
-    else { const s = DATA.tickets[n-1].status; el.classList.remove('reserved','sold','available'); el.classList.add(s==='sold' ? 'sold' : 'available'); }
-  });
-  document.getElementById('selectedCount').textContent = selection.size;
-}
-function limpiarSeleccion(){ selection = new Set(); renderTickets(); }
-
-/* Maquinita */
-function generarAleatorios(){
-  const count = Number(document.getElementById('randomCount').value) || 1;
-  if(count<1||count>10000){ alert('Cantidad 1–10,000'); return; }
-  const avail = DATA.tickets.filter(x=>x.status==='available').map(x=>x.num);
-  if(avail.length===0){ alert('No hay boletos disponibles'); return; }
-  const k = Math.min(count,avail.length);
-  const pool=[...avail], chosen=[];
-  for(let i=0;i<k;i++){ const idx=Math.floor(Math.random()*pool.length); chosen.push(pool.splice(idx,1)[0]); }
-  chosen.forEach(n=>selection.add(n));
-  renderTickets();
-  alert('Seleccionados: ' + chosen.length);
-}
-
-/* Apartar */
-function openApartar(){
-  if(selection.size===0){ alert('Selecciona boletos primero'); return; }
-  document.getElementById('modalTickets').textContent = Array.from(selection).sort((a,b)=>a-b).map(n=>String(n).padStart(4,'0')).join(', ');
-  document.getElementById('buyerName').value=''; document.getElementById('buyerPhone').value='';
-  document.getElementById('modal').classList.remove('hidden');
-}
-function closeModal(){ document.getElementById('modal').classList.add('hidden'); }
-function fillStates(){
-  const states=["Aguascalientes","Baja California","Baja California Sur","Campeche","Chiapas","Chihuahua","Ciudad de México","Coahuila","Colima","Durango","Estado de México","Guanajuato","Guerrero","Hidalgo","Jalisco","Michoacán","Morelos","Nayarit","Nuevo León","Oaxaca","Puebla","Querétaro","Quintana Roo","San Luis Potosí","Sinaloa","Sonora","Tabasco","Tamaulipas","Tlaxcala","Veracruz","Yucatán","Zacatecas"];
-  const sel = document.getElementById('buyerState'); sel.innerHTML=''; states.forEach(s=>{ const o=document.createElement('option'); o.value=s; o.textContent=s; sel.appendChild(o); });
-}
-function procesarApartado(){
-  const name=document.getElementById('buyerName').value.trim();
-  const phone=document.getElementById('buyerPhone').value.trim();
-  const state=document.getElementById('buyerState').value;
-  if(!name||!phone){ alert('Nombre y teléfono obligatorios'); return; }
-  if(!DATA.organizerWhatsApp){ if(!confirm('No hay WhatsApp configurado en Admin. Aún así guardar apartado localmente?')) return; }
-  const nums = Array.from(selection);
-  nums.forEach(n=>{ const t = DATA.tickets[n-1]; if(t && t.status==='available') t.status='reserved'; });
-  saveData(DATA);
-  // abrir WhatsApp si está configurado
-  if(DATA.organizerWhatsApp){
-    const ticketStr = nums.sort((a,b)=>a-b).map(n=>String(n).padStart(4,'0')).join(', ');
-    const msg = encodeURIComponent(`Hola, quiero apartar: ${ticketStr}\nNombre: ${name}\nEstado: ${state}\nTel: ${phone}`);
-    window.open(`https://wa.me/${DATA.organizerWhatsApp}?text=${msg}`,'_blank');
-  } else {
-    alert('Apartado guardado localmente (sin WhatsApp).');
-  }
-  selection = new Set(); renderTickets(); closeModal();
-}
-
-/* Admin */
-function openAdmin(){
-  const pass = prompt('Contraseña Admin:');
-  if(pass===null) return;
-  if(pass===DATA.adminPass){ document.getElementById('adminModal').classList.remove('hidden'); } else alert('Contraseña incorrecta.');
-}
-function closeAdmin(){ document.getElementById('adminModal').classList.add('hidden'); }
-function guardarAdmin(){
-  const file = document.getElementById('logoUpload').files[0];
-  if(file){
-    const r = new FileReader(); r.onload = e=>{ DATA.logo = e.target.result; postSave(); }; r.readAsDataURL(file);
-  } else postSave();
-  function postSave(){
-    DATA.siteTitle = document.getElementById('siteTitleInput').value || DATA.siteTitle;
-    DATA.totalEmisiones = Math.max(1, Number(document.getElementById('totalEmisiones').value) || DATA.totalEmisiones);
-    DATA.organizerWhatsApp = document.getElementById('organizerWa').value.trim();
-    DATA.promoText = document.getElementById('adminPromo').value || '';
-    DATA.payments = document.getElementById('adminPayments').value.split(',').map(s=>s.trim()).filter(Boolean);
-    DATA.infoText = document.getElementById('adminInfo').value || '';
-    DATA.terms = document.getElementById('adminTnc').value || '';
-    DATA.faq = document.getElementById('adminFaq').value || '';
-    DATA.drawDate = document.getElementById('adminDate').value || '';
-    // change pass if provided
-    const newP = document.getElementById('newAdminPass').value.trim();
-    if(newP) DATA.adminPass = newP;
-    if(DATA.tickets.length !== DATA.totalEmisiones) DATA.tickets = buildTickets(DATA.totalEmisiones, DATA.tickets);
-    // gallery upload
-    const files = Array.from(document.getElementById('galleryUpload').files || []);
-    if(files.length>0){
-      let count=0;
-      files.forEach(f=>{ const rr = new FileReader(); rr.onload = e=>{ DATA.gallery.push(e.target.result); count++; if(count===files.length){ saveData(DATA); renderAll(); alert('Guardado.'); } }; rr.readAsDataURL(f); });
-    } else { saveData(DATA); renderAll(); alert('Guardado.'); }
-  }
-}
-
-/* Admin utilities */
-document.getElementById('ticketContainer').addEventListener('click', function(e){
-  if(e.target.classList.contains('ticket')){
-    const num = parseInt(e.target.textContent,10);
-    if(!document.getElementById('adminModal').classList.contains('hidden')){
-      const t = DATA.tickets[num-1];
-      if(!t) return;
-      if(t.status==='sold') t.status='available'; else if(t.status==='available') t.status='sold'; else if(t.status==='reserved'){ if(confirm('Convertir apartado a vendido?')) t.status='sold'; }
-      saveData(DATA); renderTickets();
+    function seleccionarNumero(span) {
+      if (span.classList.contains("disponible")) {
+        span.className = "apartado";
+      } else if (span.classList.contains("apartado")) {
+        span.className = "vendido";
+      } else {
+        span.className = "disponible";
+      }
     }
-  }
-});
+  </script>
 
-function resetAllStates(){ if(!confirm('Restablecer a disponible?')) return; DATA.tickets.forEach(t=>t.status='available'); saveData(DATA); renderTickets(); alert('Restablecido'); }
-function exportData(){ const a=document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(DATA,null,2)],{type:'application/json'})); a.download='sorteos_arteaga_data.json'; a.click(); }
-function importDataPrompt(){ const inp=document.createElement('input'); inp.type='file'; inp.accept='application/json'; inp.onchange = e=>{ const f=e.target.files[0]; const r=new FileReader(); r.onload = ev=>{ try{ const parsed = JSON.parse(ev.target.result); if(confirm('Sobrescribir datos locales?')){ DATA = Object.assign({}, DEFAULT, parsed); DATA.tickets = buildTickets(DATA.totalEmisiones, DATA.tickets||[]); saveData(DATA); renderAll(); alert('Importado'); } }catch(err){ alert('Archivo inválido'); } }; r.readAsText(f); }; inp.click(); }
-
-function exportDataCSV(){
-  const rows=[['Fecha','Nombre','Estado','Teléfono','Boletos']];
-  // Not storing buyers historically in this local version; implement if needed
-  alert('No hay historial de compradores en la versión local. Usa Export JSON para respaldo.');
-}
-
-/* share */
-function openShare(){ if(navigator.share) navigator.share({title:DATA.siteTitle,text:DATA.infoText}); else alert('Usa el enlace del navegador para compartir.'); }
-
-/* init */
-renderAll();
-window.addEventListener('beforeunload', ()=> saveData(DATA));
-</script>
 </body>
 </html>
