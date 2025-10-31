@@ -1,260 +1,128 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sorteos Arteaga - Participa y gana</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 30px 15px;
-      background-color: #111;
-      border-bottom: 2px solid #ff0000;
-    }
-
-    header h1 {
-      color: #ffcc00;
-      font-size: 2.5em;
-      margin-bottom: 5px;
-    }
-
-    header p {
-      color: #00aaff;
-      font-size: 1.2em;
-    }
-
-    section {
-      padding: 25px;
-      border-bottom: 1px solid #222;
-    }
-
-    h2 {
-      color: #ffcc00;
-      text-transform: uppercase;
-      border-left: 4px solid #ff0000;
-      padding-left: 8px;
-    }
-
-    .social {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .social a {
-      color: #00aaff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .admin-section {
-      background-color: #111;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .whatsapp {
-      background-color: #25D366;
-      color: #000;
-      padding: 15px;
-      text-align: center;
-      border-radius: 8px;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-    .promos {
-      background-color: #000;
-      padding: 15px;
-      text-align: center;
-      border-top: 2px solid #ff0000;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      background-color: #111;
-      color: #aaa;
-    }
-
-    button {
-      background-color: #ff0000;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #ff6600;
-    }
-
-    .boletos {
-      background-color: #111;
-      padding: 20px;
-      text-align: center;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-
-    .boletos span {
-      display: inline-block;
-      margin: 3px;
-      padding: 8px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .disponible { background-color: #fff; color: #000; }
-    .vendido { background-color: #000; color: #fff; border: 1px solid #555; }
-    .apartado { background-color: orange; color: #000; }
-
-    .maquinita {
-      text-align: center;
-      padding: 25px;
-      border-bottom: 2px solid #ffcc00;
-    }
-
-    .maquinita img {
-      width: 70px;
-      height: 70px;
-    }
-
-    .maquinita input {
-      width: 80px;
-      padding: 5px;
-      text-align: center;
-      margin-top: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorteos Arteaga - Participa y Gana</title>
+<style>
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #111;
+  padding: 20px;
+}
+section {
+  background-color: #111;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #666;
+}
+img {
+  max-width: 90%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+a {
+  color: #00aaff;
+  text-decoration: none;
+}
+footer {
+  background-color: #111;
+  padding: 10px;
+  margin-top: 30px;
+}
+.redes a {
+  display: inline-block;
+  margin: 5px;
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>🎟️ Sorteos Arteaga</h1>
-    <p>Participa y gana con Sorteos Arteaga</p>
-  </header>
+<header>
+  <h1>🎟️ Sorteos Arteaga</h1>
+  <h3>Participa y gana premios increíbles</h3>
+</header>
 
-  <section class="social">
-    <h2>Redes Sociales</h2>
-    <div>
-      <a href="#">Facebook</a> |
-      <a href="#">Instagram</a>
-    </div>
-  </section>
+<section id="informacion">
+  <h2>Información del Sorteo</h2>
+  <p id="detalle"></p>
+  <p><b>Fecha del evento:</b> <span id="fecha"></span></p>
+</section>
 
-  <section>
-    <h2>Detalles de la Rifa</h2>
-    <div class="admin-section">
-      <p>Solo el administrador puede editar esta sección con información sobre la rifa y el premio.</p>
-    </div>
-  </section>
+<section id="fotoPremio">
+  <h2>Premio</h2>
+  <img id="foto" src="" alt="Premio del sorteo">
+</section>
 
-  <section>
-    <h2>Fotos de la Rifa</h2>
-    <div class="admin-section">
-      <p>Solo el administrador puede agregar imágenes del premio o del sorteo.</p>
-    </div>
-  </section>
+<section id="config">
+  <h2>Configuración del Sorteo</h2>
+  <p><b>Emisiones:</b> <span id="emisiones"></span></p>
+  <p><b>Boletos por emisión:</b> <span id="boletos"></span></p>
+</section>
 
-  <section>
-    <h2>Métodos de Pago</h2>
-    <div class="admin-section">
-      <p>Aceptamos pagos con tarjeta, transferencias y depósitos en Oxxo.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Lista de Disponibles</h2>
-    <div class="boletos">
-      <div class="maquinita">
-        <img src="https://cdn-icons-png.flaticon.com/512/3658/3658951.png" alt="Maquinita de la suerte">
-        <h3>🎰 Maquinita de la Suerte</h3>
-        <input type="number" id="cantidad" placeholder="Cantidad" min="1" max="10000">
-        <br><br>
-        <button onclick="generarBoletos()">Generar</button>
-      </div>
-      <div id="numeros"></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Legalidad y Transparencia</h2>
-    <p>Comprometidos con la honestidad y claridad en cada sorteo. Basados en los resultados oficiales de la Lotería Nacional.</p>
-  </section>
-
-  <div class="whatsapp">
-    📱 Contáctanos por WhatsApp para información de rifas
+<section id="redes">
+  <h2>Redes Sociales</h2>
+  <div class="redes">
+    <a id="facebook" target="_blank">Facebook</a> |
+    <a id="instagram" target="_blank">Instagram</a> |
+    <a id="whatsapp" target="_blank">WhatsApp</a>
   </div>
+</section>
 
-  <div class="promos">
-    <h2>Promociones</h2>
-    <p>🎁 2 boletos por $100 pesos</p>
-  </div>
+<section id="contacto" style="background-color:green;">
+  <h2>📞 Contáctanos</h2>
+  <p>Para más información del sorteo, escríbenos por WhatsApp</p>
+  <a id="linkWhats" target="_blank">Enviar mensaje</a>
+</section>
 
-  <section>
-    <h2>Preguntas Frecuentes</h2>
-    <p>¿Cómo se elige al ganador? – Según los resultados de la Lotería Nacional.</p>
-  </section>
+<footer>
+  <p>© 2025 Sorteos Arteaga — Todos los derechos reservados</p>
+</footer>
 
-  <section>
-    <h2>Términos y Condiciones</h2>
-    <p>La participación implica la aceptación total de las bases del sorteo.</p>
-  </section>
+<script>
+function cargarDatos() {
+  const emisiones = localStorage.getItem('emisiones');
+  const boletos = localStorage.getItem('totalBoletos');
+  const detalle = localStorage.getItem('detalle');
+  const fecha = localStorage.getItem('fecha');
+  const foto = localStorage.getItem('foto');
+  const facebook = localStorage.getItem('facebook');
+  const instagram = localStorage.getItem('instagram');
+  const whatsapp = localStorage.getItem('whatsapp');
 
-  <section>
-    <h2>Fecha del Evento</h2>
-    <p>El sorteo se llevará a cabo el día que defina el administrador.</p>
-  </section>
+  document.getElementById('emisiones').textContent = emisiones || 'No definido';
+  document.getElementById('boletos').textContent = boletos || 'No definido';
+  document.getElementById('detalle').textContent = detalle || 'Aún no se han agregado detalles del sorteo.';
+  document.getElementById('fecha').textContent = fecha || 'Por confirmar';
+  document.getElementById('foto').src = foto || '';
+  
+  // redes sociales
+  document.getElementById('facebook').href = facebook || '#';
+  document.getElementById('instagram').href = instagram || '#';
+  document.getElementById('whatsapp').href = whatsapp || '#';
+  document.getElementById('linkWhats').href = whatsapp || '#';
+}
 
-  <footer>
-    © 2025 Sorteos Arteaga – Todos los derechos reservados.
-  </footer>
-
-  <script>
-    function generarBoletos() {
-      const cantidad = parseInt(document.getElementById("cantidad").value);
-      const numerosDiv = document.getElementById("numeros");
-      numerosDiv.innerHTML = "";
-      if (!cantidad || cantidad < 1 || cantidad > 10000) {
-        alert("Por favor ingresa una cantidad válida entre 1 y 10,000.");
-        return;
-      }
-      for (let i = 0; i < cantidad; i++) {
-        const numero = Math.floor(Math.random() * 10000) + 1;
-        const span = document.createElement("span");
-        span.className = "disponible";
-        span.textContent = numero;
-        span.onclick = () => seleccionarNumero(span);
-        numerosDiv.appendChild(span);
-      }
-    }
-
-    function seleccionarNumero(span) {
-      if (span.classList.contains("disponible")) {
-        span.className = "apartado";
-      } else if (span.classList.contains("apartado")) {
-        span.className = "vendido";
-      } else {
-        span.className = "disponible";
-      }
-    }
-  </script>
+window.onload = cargarDatos;
+</script>
 
 </body>
 </html>
